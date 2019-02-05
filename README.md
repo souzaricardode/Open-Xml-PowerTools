@@ -1,5 +1,11 @@
-﻿Open-XML-PowerTools
+[ARCHIVED] Open-XML-PowerTools
 ===================
+This repository is no longer maintained by Microsoft. It has been archived and can still be forked and cloned for use and continued developement. 
+
+If you're looking for a fork of this project that is actively maintained, try the following: 
+
+[https://github.com/EricWhiteDev/Open-Xml-PowerTools](https://github.com/EricWhiteDev/Open-Xml-PowerTools)
+
 The Open XML PowerTools provides guidance and example code for programming with Open XML
 Documents (DOCX, XLSX, and PPTX).  It is based on, and extends the functionality
 in the Open XML SDK (https://github.com/OfficeDev/Open-XML-SDK).
