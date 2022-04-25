@@ -143,18 +143,18 @@ namespace OpenXmlPowerTools
                                 return ce.Element(W.rPr).ToString(SaveOptions.None);
                             });
                         XElement paragraphWithConsolidatedRuns = new XElement(W.p,
-                            groupedAdjacentRunsWithIdenticalFormatting.Select(g =>
-                                {
-                                    if (g.Key == "DontConsolidate")
-                                        return (object)g;
-                                    string textValue = g.Select(r => r.Element(W.t).Value).StringConcatenate();
-                                    XAttribute xs = null;
-                                    if (textValue[0] == ' ' || textValue[textValue.Length - 1] == ' ')
-                                        xs = new XAttribute(XNamespace.Xml + "space", "preserve");
-                                    return new XElement(W.r,
-                                        g.First().Elements(W.rPr),
-                                        new XElement(W.t, xs, textValue));
-                                }));
+                                    groupedAdjacentRunsWithIdenticalFormatting.Select(g =>
+                                    {
+                                        if (g?.Key == "DontConsolidate")
+                                            return (object)g;
+                                        string textValue = g.Select(r => r.Element(W.t).Value).StringConcatenate() ?? string.Empty;
+                                        XAttribute xs = null;
+                                        if (textValue == null || textValue == string.Empty || textValue[0] == ' ' || ((textValue.Length >= 0) && textValue[textValue.Length - 1] == ' '))
+                                            xs = new XAttribute(XNamespace.Xml + "space", "preserve");
+                                        return new XElement(W.r,
+                                            g?.First().Elements(W.rPr),
+                                            new XElement(W.t, xs, textValue));
+                                    }));
                         return paragraphWithConsolidatedRuns;
                     }
                     return element;
